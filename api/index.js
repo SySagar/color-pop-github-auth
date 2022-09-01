@@ -8,12 +8,12 @@ const client_secret = '967cf1b11c695f7e7d00b98974effb719e29054a'
 
 const port = process.env.PORT || 3000
 
-app.get('/', (req, res) => {
+app.get('/api', (req, res) => {
     res.json({
         message: 'Server on'
     })
 })
-app.get('/callback', (req, res) => {
+app.get('/api/callback', (req, res) => {
     console.log(req.query)
     const code = req.query.code
     axios.post(`https://github.com/login/oauth/access_token?client_id=${client_id}&client_secret=${client_secret}&code=${code}`, {
